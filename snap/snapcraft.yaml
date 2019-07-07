@@ -1,0 +1,23 @@
+name: volatility-phocean
+version: "git-master"
+summary: Volatility
+description: |
+  Advanced memory forensics framework.
+base: core18
+confinement: strict
+grade: stable
+
+parts:
+  rfcat:
+    source: https://github.com/volatilityfoundation/volatility.git
+    source-type: git
+    plugin: python
+    python-version: python2
+    python-packages:
+      - distorm3
+      - pycrypto
+    
+apps:
+  volatility:
+    command: bin/vol.py
+    plugs: [home]
